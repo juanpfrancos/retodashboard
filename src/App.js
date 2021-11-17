@@ -4,17 +4,18 @@ import './App.css';
 import Ciudades from "./components/Ciudades";
 import Genero from "./components/Genero";
 import Age from "./components/Age";
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 function App() {
    const [cities, setCities] = useState([]);
+   const [age, setAge] = useState([])
    const [genre, setGenre] = useState([])
    const ciudadesOrdered= []
-   const agesOrdered= []
-   const teen = []
-   const youngAdult = []
-   const adult = []
-   let count1 = 0
-   let count2 = 0
+   let count = 0
   useEffect(() => {
     Axios({
       url: "https://www.datos.gov.co/resource/gt2j-8ykr.json",
@@ -33,8 +34,8 @@ function App() {
         },{})
 
         for (var key in casosCiudades) {
-          ciudadesOrdered.push({id:count1, ciudad:key, total:casosCiudades[key]});
-          count1 = count1 + 1;
+          ciudadesOrdered.push({id:count, ciudad:key, total:casosCiudades[key]});
+          count = count + 1;
         }
         setCities(ciudadesOrdered)
 
@@ -44,20 +45,8 @@ function App() {
           countAges[age] = (countAges[age] || 0)+1
           return countAges
         },{})
+        setAge(age)
         
-        for (var a in age) {
-          agesOrdered.push({id:count2, age:a, total:age[a]});
-          //count2 = count2+1;
-          if ( a < 20){
-            teen.push({id:count2, age:a, total:age[a]});
-          }
-          if (a >= 20 && a < 40){
-            youngAdult.push({id:count2, age:a, total:age[a]});
-          }
-          if(a >= 40){
-             adult.push({id:count2, age:a, total:age[a]});
-          }
-        }
 
     //Genre
 
@@ -79,11 +68,33 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <Genero data={genre}></Genero>
-        <Ciudades data={cities}></Ciudades>
-        <Age teen={teen} youngAdult={youngAdult} adult={adult}></Age>
-      </header>
+      <AppBar position="relative">
+        <Toolbar>
+          <Typography variant="h5" color="inherit" noWrap>
+            Dashboard Covid-19 Colombia
+          </Typography>
+        </Toolbar>
+      </AppBar>
+
+      <Grid container spacing={4}>
+        <Grid item xs={12} md={8} lg={7}>
+          <Ciudades data={cities}></Ciudades>
+        </Grid>
+        <Grid item xs={12} md={8} lg={5}>
+          <Genero data={genre}></Genero>
+        </Grid>
+      </Grid>
+      
+      
+      <Age data={age}></Age>
+      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
+        <Typography
+          variant="subtitle1"
+          align="center"
+        >
+          💻 Desarrollado por <a href="https://github.com/juanpfrancos">@Juanpfrancos</a>
+        </Typography>
+      </Box>
     </div>
   );
 }
