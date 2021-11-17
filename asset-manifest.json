@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/retodashboard/static/css/main.4d72c4db.chunk.css",
+    "main.js": "/retodashboard/static/js/main.425823d2.chunk.js",
+    "main.js.map": "/retodashboard/static/js/main.425823d2.chunk.js.map",
+    "runtime-main.js": "/retodashboard/static/js/runtime-main.0c996826.js",
+    "runtime-main.js.map": "/retodashboard/static/js/runtime-main.0c996826.js.map",
+    "static/js/2.79446eb3.chunk.js": "/retodashboard/static/js/2.79446eb3.chunk.js",
+    "static/js/2.79446eb3.chunk.js.map": "/retodashboard/static/js/2.79446eb3.chunk.js.map",
+    "static/js/3.1a48bd20.chunk.js": "/retodashboard/static/js/3.1a48bd20.chunk.js",
+    "static/js/3.1a48bd20.chunk.js.map": "/retodashboard/static/js/3.1a48bd20.chunk.js.map",
+    "index.html": "/retodashboard/index.html",
+    "static/css/main.4d72c4db.chunk.css.map": "/retodashboard/static/css/main.4d72c4db.chunk.css.map",
+    "static/js/2.79446eb3.chunk.js.LICENSE.txt": "/retodashboard/static/js/2.79446eb3.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0c996826.js",
+    "static/js/2.79446eb3.chunk.js",
+    "static/css/main.4d72c4db.chunk.css",
+    "static/js/main.425823d2.chunk.js"
+  ]
+}
