@@ -1,37 +1,28 @@
 import React from "react"
-import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';            
+import { DataGrid } from '@mui/x-data-grid';
 
 
-function Ciudades(props) {
-    //console.log(props.data)
-    return(
-        <>
-            <Paper elevation={12}>
-                <h1>Ciudades</h1>
-            </Paper>
-            <Table>
-              <TableHead>
-                <TableRow>
-                    <TableCell>
-                    </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {props.data.map(row => (
-                  <TableRow key={row.id}>
-                    <TableCell component="th" scope="row">{row.ciudad}</TableCell>
-                    <TableCell>{row.total}</TableCell>
-                  </TableRow>
-                ))}     
-              </TableBody>
-            </Table>
-        </>
-    )
+const columns = [
+  { field: 'ciudad', headerName: 'Ciudad', width: 130 },
+  { field: 'total', headerName: 'Total Casos', type: 'number', width: 200 },
+];
+
+
+export default function DataTable(props) {
+  return (
+    <div style={{ height: 400, width: '100%' }}>
+      <Paper elevation={12}>
+          <h1>Ciudades</h1>
+      </Paper>
+      <DataGrid
+        rows={props.data}
+        columns={columns}
+        pageSize={5}
+        rowsPerPageOptions={[5]}
+        disableSelectionOnClick
+        sortModel= {[{ field: 'total', sort: "desc" }]}
+      />
+    </div>
+  );
 }
-
-export default Ciudades
